@@ -1,4 +1,4 @@
-# Riemann-Explicit-Formula-for-Primes
+# Riemann Explicit Formula for Primes up to x
 
 Author: Daniel Hutama, McGill University Desautels Faculty of Management
 
