@@ -2,18 +2,17 @@
 
 Author: Daniel Hutama, McGill University Desautels Faculty of Management
 
-The form of Riemann's R(x) formula for primes using the nontrivial zeros of the zeta function assumes the Riemann Hypothesis and uses the approximation li(x)~(x/logx) * (asymptotic term),
-where the asymptotic term is a divergent infinite sum. 
-The code allows the user to determine the cutoff term of the infinite sum, depending on desired precision.
+This form of Riemann's R(x) formula for primes using the nontrivial zeros of the zeta function assumes the Riemann Hypothesis and uses the approximation li(x)~(x/logx) * (asymptotic term), where the asymptotic term is a divergent infinite sum. 
+The code allows the user to determine the cutoff terms of each infinite sum, depending on desired precision.
 
 
 There are 3 infinite sums involved in this form of the explicit formula.
 
 The first sum over n affects the "main term" and the correction term involving the zeta zeros.
 
-The second sum over the (positive) imaginary parts of the nontrivial zeros of the zeta function (denoted gamma) affets the "primary correction term."
+The second sum over the (positive) imaginary parts of the nontrivial zeros of the zeta function (denoted gamma) affects the "primary correction term."
 
-The third sum is over k in the asymptotic approximation li(x)~x/log(x)*sum_k(k!/(log(x))^k). For very large x, the cutoff term is significant as the error is on the order of sqrt(x)/log(x)^k.
+The third sum is over k in the asymptotic approximation li(x)~x/log(x)\*sum_k(k!/(log(x))^k). For very large x, the cutoff term is significant as the error is on the order of sqrt(x)/log(x)^k.
 
 Note: n starts at 1, gamma starts at gamma_1 = 14.1347..., and k starts at 0.
 
