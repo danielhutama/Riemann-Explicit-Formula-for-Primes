@@ -51,9 +51,9 @@ def Riemann_correction(x, numbersums, numberzeros, numberasymterms):
         sumasymterms=sum(asymterms)
         if moebius(n)==1:
             n_dict[n] = -sum([((4*x^(1/(2*n))/log(x)*(cos((gamma/n)*log(x))+2*gamma*sin((gamma/n)*log(x)))/(1+4*gamma^2))*sumasymterms) for gamma in zz])
-        if moebius(n)==0:
+        elif moebius(n)==0:
             n_dict[n] = 0
-        if moebius(n)==-1:
+        elif moebius(n)==-1:
             n_dict[n] = sum([((4*x^(1/(2*n))/log(x)*(cos((gamma/n)*log(x))+2*gamma*sin((gamma/n)*log(x)))/(1+4*gamma^2))*sumasymterms) for gamma in zz])
     return sum(n_dict.values())
 
