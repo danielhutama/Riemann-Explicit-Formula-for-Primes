@@ -1,5 +1,7 @@
 # Riemann-Explicit-Formula-for-Primes
 
+Author: Daniel Hutama, McGill University Desautels Faculty of Management
+
 The form of Riemann's R(x) formula for primes using the nontrivial zeros of the zeta function assumes the Riemann Hypothesis and uses the approximation li(x)~(x/logx) * (asymptotic term),
 where the asymptotic term is a divergent infinite sum. 
 The code allows the user to determine the cutoff term of the infinite sum, depending on desired precision.
