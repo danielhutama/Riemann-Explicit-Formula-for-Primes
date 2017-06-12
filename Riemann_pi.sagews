@@ -3,7 +3,7 @@
 
 # This block creates 3 functions of interest: 
 # The first is the main term in Riemann's explicit formula.
-# The second is the correction term involving the zeta zeros (using an asymptotic approximation for li(x).
+# The second is the correction term involving the zeta zeros (using an asymptotic approximation for li(x)).
 # The third is the explicit formula to count primes up to x. The inputs are described in the readme. 
 # Note there is a tradeoff between accuracy and computation time.
 
