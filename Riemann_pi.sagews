@@ -25,7 +25,6 @@ from numpy import polyfit
 plt.rcParams['text.usetex'] = True
 plt.rcParams['text.latex.unicode'] = True
 import scipy
-
 from sage.functions.spike_function import SpikeFunction
 from scipy.interpolate import interp1d
 from scipy import stats
@@ -33,6 +32,8 @@ import scipy.integrate as integrate
 import scipy.special as special
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
+
+
 
 # pi(x) using the asymptotic expansion of li(x)
 %time
@@ -59,3 +60,5 @@ def Riemann_correction(x, numbersums, numberzeros, numberasymterms):
 
 def Riemann_explicit(x, numbersums, numberzeros, numberasymterms):
     return sum([Riemann_main(x, numbersums, numberzeros, numberasymterms), Riemann_correction(x, numbersums, numberzeros, numberasymterms)])
+
+
