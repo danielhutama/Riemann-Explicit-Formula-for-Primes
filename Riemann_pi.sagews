@@ -35,30 +35,35 @@ from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
 
 
-# pi(x) using the asymptotic expansion of li(x)
+# pi(x) using R(x)
 %time
-def Riemann_main(x, numbersums, numberzeros, numberasymterms):
+def Riemann_main(x, numbersums, numberzeros):
     return sum([sum([moebius(n)/n*li(x^(1/n)) for n in xrange(1, numbersums+1)]), -1/log(x), (1/pi)*arctan(pi/log(x))])
 
-# includes first k+1 summation terms of the asymptotic expansion of li(x)~x/log(x)
-def Riemann_correction(x, numbersums, numberzeros, numberasymterms):
+def Riemann_correction(x, numbersums, numberzeros):
     zz = zeta_zeros()[0:numberzeros]
     n_dict = {n:[] for n in xrange(1, numbersums+1)}
     for n in xrange(1, numbersums+1):
-        asymterms=[1]
-        for k in xrange(1, numberasymterms+1):
-            for gamma in zz:
-                asymterms.append((factorial(k)*(2*n)^k)/(log(x)^k*(1+4*gamma^2)^k))
-        sumasymterms=sum(asymterms)
         if moebius(n)==1:
-            n_dict[n] = -sum([((4*x^(1/(2*n))/log(x)*(cos((gamma/n)*log(x))+2*gamma*sin((gamma/n)*log(x)))/(1+4*gamma^2))*sumasymterms) for gamma in zz])
+            n_dict[n] = -sum([(1/n)*2*real(Ei(((1/2)+I*gamma)/n*log(x))) for gamma in zz])
         elif moebius(n)==0:
             n_dict[n] = 0
         elif moebius(n)==-1:
-            n_dict[n] = sum([((4*x^(1/(2*n))/log(x)*(cos((gamma/n)*log(x))+2*gamma*sin((gamma/n)*log(x)))/(1+4*gamma^2))*sumasymterms) for gamma in zz])
+            n_dict[n] = sum([(1/n)*2*real(Ei(((1/2)+I*gamma)/n*log(x))) for gamma in zz])
     return sum(n_dict.values())
 
-def Riemann_explicit(x, numbersums, numberzeros, numberasymterms):
-    return sum([Riemann_main(x, numbersums, numberzeros, numberasymterms), Riemann_correction(x, numbersums, numberzeros, numberasymterms)])
+def Riemann_explicit(x, numbersums, numberzeros):
+    return sum([Riemann_main(x, numbersums, numberzeros), Riemann_correction(x, numbersums, numberzeros)])
 
 
+# ------ This function saves plots to your folder
+def savetofile(x, plotdistance, numsums, minzeros, maxzeros):
+    primes = plot(prime_pi(x), (x, 0, plotdistance+1), rgbcolor = 'red')
+    for gamma in xrange(minzeros, maxzeros+1):
+        myRx = plot(Riemann_explicit(x, numsums, gamma), (x, 2, plotdistance), rgbcolor = 'blue',xmin=0, xmax=plotdistance, ymax=prime_pi(plotdistance))
+        if gamma == 1:
+            p = plot(primes + myRx + text('{} nontrivial zero'.format(gamma),[10, 22.5], rgbcolor='black'))
+            p.save('{}.png'.format(gamma))
+        if gamma != 1:
+            p = plot(primes + myRx + text('{} nontrivial zeros'.format(gamma),[10, 22.5], rgbcolor='black'))
+            p.save('{}.png'.format(gamma))
