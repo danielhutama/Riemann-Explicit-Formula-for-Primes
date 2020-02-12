@@ -1,6 +1,6 @@
 # Riemann's Explicit Formula Implementation source code
 
-Author: Daniel Hutama, McGill University Desautels Faculty of Management
+Author: Daniel Hutama
 
 This repository contains source code used to make all illustrations in *Implementation of Riemann's Explicit Formula for Rational and Gaussian Primes in Sage*. This report has also been uploaded as a PDF file, titled "Explicit\_Formula\_Sage." This PDF file should be considered as the full readme for this repository.  
 
